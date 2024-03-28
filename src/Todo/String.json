@@ -1,0 +1,10 @@
+{
+"logo":"TO",
+"logoHalf":"DO",
+"header":"Todo Done",
+"comment":"keep it up",
+"pivots":{
+    "taskTab":"Tasks",
+    "completed":"Completed"
+}
+}
