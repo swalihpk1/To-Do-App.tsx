@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react';
-import { ActionEnum, IAddAction, IDeleteAction, IReducerAction, ITask, ITodoContexts, ITodoState, IToggleFavAction } from './Types';
+import { ActionEnum, IAddAction, IDeleteAction, IReducerAction, ITask, ITodoContexts, ITodoState, IToggleFavAction, IUpdateAction } from './Types';
 import { clone } from './utility';
 
 
@@ -32,6 +32,16 @@ const toggleFavAction = (state: ITodoState, action: IToggleFavAction) => {
     return cloneActiveTasks
 }
 
+const UpdateTaskAction = (state: ITodoState, action: IUpdateAction) => { 
+    const cloneActiveTasks: ITask[] = clone(state.activeTasks);
+    const index = cloneActiveTasks.findIndex(task => task.id === action.data.id)
+    if (index >= 0) {
+        cloneActiveTasks[index] = action.data
+
+    }
+    return cloneActiveTasks
+}
+
 
 const reducer = (state: ITodoState, action: IReducerAction) => {
 
@@ -44,6 +54,9 @@ const reducer = (state: ITodoState, action: IReducerAction) => {
 
         case ActionEnum.ToggleFav:
             return { ...state, activeTasks: toggleFavAction(state, action) }
+
+        case ActionEnum.Update:
+            return { ...state, activeTasks: UpdateTaskAction(state, action) }
     }
     return { ...state };
 }

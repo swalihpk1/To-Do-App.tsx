@@ -3,6 +3,7 @@ import { Dispatch } from "react";
 export enum PivotKeyEnum {
     Tasks = "Tasks",
     Completed = "Completed",
+
 }
 
 export interface ITask {
@@ -11,22 +12,24 @@ export interface ITask {
     isFav: boolean
 }
 
-export interface ITodoContexts {
+export interface ITodoContexts { 
     activeTasks: ITask[]
     dispatch: Dispatch<any>
 }
 
 export interface ITodoState {
     activeTasks: ITask[]
+    completedTasks: ITask[]
 }
 
 export enum ActionEnum {
     Add,
     Delete,
-    ToggleFav
+    ToggleFav,
+    Update
 }
 
-export type IReducerAction = IAddAction | IDeleteAction | IToggleFavAction; 
+export type IReducerAction = IAddAction | IDeleteAction | IToggleFavAction | IUpdateAction;
 
 export interface IAddAction {
     type: ActionEnum.Add,
@@ -41,4 +44,10 @@ export interface IDeleteAction {
 export interface IToggleFavAction {
     type: ActionEnum.ToggleFav,
     data: { id: string }
-} 
+}
+
+export interface IUpdateAction {
+    type: ActionEnum.Update,
+    data: ITask;
+}
+
