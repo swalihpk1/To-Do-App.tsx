@@ -12,8 +12,9 @@ export interface ITask {
     isFav: boolean
 }
 
-export interface ITodoContexts { 
+export interface ITodoContexts {
     activeTasks: ITask[]
+    completedTasks: ITask[]
     dispatch: Dispatch<any>
 }
 
@@ -26,10 +27,12 @@ export enum ActionEnum {
     Add,
     Delete,
     ToggleFav,
-    Update
+    Update,
+    Completed,
+    DeleteCompletedTask
 }
 
-export type IReducerAction = IAddAction | IDeleteAction | IToggleFavAction | IUpdateAction;
+export type IReducerAction = IAddAction | IDeleteAction | IToggleFavAction | IUpdateAction | ICompletedAction
 
 export interface IAddAction {
     type: ActionEnum.Add,
@@ -37,7 +40,7 @@ export interface IAddAction {
 }
 
 export interface IDeleteAction {
-    type: ActionEnum.Delete,
+    type: ActionEnum.Delete | ActionEnum.DeleteCompletedTask;
     data: { id: string }
 }
 
@@ -49,5 +52,10 @@ export interface IToggleFavAction {
 export interface IUpdateAction {
     type: ActionEnum.Update,
     data: ITask;
+}
+
+export interface ICompletedAction{
+    type: ActionEnum.Completed,
+    data:{id:string}
 }
 

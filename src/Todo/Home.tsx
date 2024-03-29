@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import HomeStyle from "./Home.style";
 import TodoString from "./String.json";
-import { Label, Pivot, PivotItem, Stack } from "@fluentui/react";
+import { Pivot, PivotItem, Stack } from "@fluentui/react";
 import { PivotKeyEnum } from "./Types";
 import TaskList from "./TaskList";
 import TodoProvider from "./TodoProvider";
 import TaskForm from "./TaskForm";
 
 import { initializeIcons } from '@fluentui/font-icons-mdl2';
+import CompletedTaskList from "./CompletedTaskList";
 initializeIcons();
 
 
@@ -63,7 +64,7 @@ const Home = () => {
               </PivotItem>
 
               <PivotItem headerText={TodoString.pivots.completed} itemKey={PivotKeyEnum.Completed} >
-                <Label>Pivot #2</Label>
+                <CompletedTaskList />
               </PivotItem>
 
 

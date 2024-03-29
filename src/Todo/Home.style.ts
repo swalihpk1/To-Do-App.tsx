@@ -99,10 +99,8 @@ const HomeStyle = mergeStyleSets({
         color: "rgb(195, 177, 147)!important"
     },
     checkbox: {
-        '& input[type="checkbox"]': {
-            background: 'white !important',
-            width: '30rem !important',
-        },
+        width: '22px !important',
+        border: "1px solid rgb(195, 177, 147)"
     },
     pivotContainer: {
         margin: "2rem",
@@ -119,7 +117,7 @@ const HomeStyle = mergeStyleSets({
         marginLeft: "10px",
         color: "#00b33a"
     }
-    
+
 });
 
 export default HomeStyle;

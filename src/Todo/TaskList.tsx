@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import HomeStyle from './Home.style';
-import { FontIcon, Stack } from '@fluentui/react';
+import { Checkbox, FontIcon, Stack } from '@fluentui/react';
 import * as Types from './Types';
 import { TodoContext } from './TodoProvider';
 import TodoString from './String.json'
@@ -23,14 +23,15 @@ const TaskList = ({ setEditTask }: Props) => {
         dispatch({ type: Types.ActionEnum.ToggleFav, data: { id } })
     }
 
-    // const onEditTaskClick = (id: string) => {
-    //     dispatch({ type: Types.ActionEnum.editTask, data: { id } })
-    // }
+    const checkboxHandler = (id: string) => {
+        dispatch({ type: Types.ActionEnum.Completed, data: { id } })
+    }
+
 
     const onRenderCell = (task: Types.ITask) => {
         return <div className={`${HomeStyle.tasks} row`} key={task.id}>
             <div className="col-md-6 d-flex align-items-center ">
-                <input type="checkbox" className={`${HomeStyle.checkbox}`} />
+                <Checkbox className={`${HomeStyle.checkbox}`} onChange={() => checkboxHandler(task.id)} />
                 <h4 className={`${HomeStyle.taskName}`}>{task.task}</h4>
             </div>
             <div className="col-md-6 d-flex align-items-center justify-content-end ">
@@ -43,7 +44,7 @@ const TaskList = ({ setEditTask }: Props) => {
 
     return (
         <Stack className={`${HomeStyle.main3} mt-5`} >
-            {activeTasks.map(onRenderCell)}
+            {activeTasks.length ? activeTasks.map(onRenderCell) : <h6 className='text-secondary'>No tasks to show</h6>}
         </Stack>
     );
 };
