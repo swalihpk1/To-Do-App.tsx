@@ -1,4 +1,4 @@
-import { MessageBar, MessageBarType } from '@fluentui/react';
+import { FontIcon, MessageBarType } from '@fluentui/react';
 import React, { useContext, useEffect, useState } from 'react';
 import HomeStyle from './Home.style';
 import useInputs from './useInputs';
@@ -25,7 +25,7 @@ const TaskForm = () => {
     const onFormSubmit = (event: React.FormEvent) => {
         event.preventDefault();
 
-        const data: ITask = { id: "", task: task.value }
+        const data: ITask = { id: "", task: task.value ,isFav:false}
         dispatch({ type: ActionEnum.Add, data })
         setShowMessage({ type: MessageBarType.success, message: "Task Added" });
     }
@@ -58,7 +58,7 @@ const TaskForm = () => {
                 </button>
             </div>
             {showMessage.message && (
-                <p className={`${HomeStyle.messageBar}`}>Task added <i className={`${HomeStyle.icons} fi fi-bs-octagon-check`}></i></p>
+                <p className={`${HomeStyle.messageBar}`}><i>Task added <FontIcon className={`${HomeStyle.messageIcon}`} iconName="BoxCheckmarkSolid" /></i></p>
             )}
         </form>
     );

@@ -7,6 +7,9 @@ import TaskList from "./TaskList";
 import TodoProvider from "./TodoProvider";
 import TaskForm from "./TaskForm";
 
+import { initializeIcons } from '@fluentui/font-icons-mdl2';
+initializeIcons();
+
 
 const Home = () => {
   const [selectedKey, setSelectedKey] = useState<string>(PivotKeyEnum.Tasks);
@@ -50,7 +53,7 @@ const Home = () => {
                 <TaskList />
               </PivotItem>
 
-              <PivotItem headerText={TodoString.pivots.completed} itemKey={PivotKeyEnum.Completed} className={`${HomeStyle.linkIsSelected}`}>
+              <PivotItem headerText={TodoString.pivots.completed} itemKey={PivotKeyEnum.Completed} >
                 <Label>Pivot #2</Label>
               </PivotItem>
 

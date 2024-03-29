@@ -112,11 +112,14 @@ const HomeStyle = mergeStyleSets({
         width: "28%!important",
         margin: "1rem !important",
         borderRadius: "3px",
-        color: "#b8dbb8"
+        color: "#00b33a"
     },
-    linkIsSelected: {
-        color: "#b8dbb8 !important"
+    messageIcon: {
+        position: "absolute",
+        marginLeft: "10px",
+        color: "#00b33a"
     }
+    
 });
 
 export default HomeStyle;

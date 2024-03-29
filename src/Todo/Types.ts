@@ -8,6 +8,7 @@ export enum PivotKeyEnum {
 export interface ITask {
     id: string,
     task: string,
+    isFav: boolean
 }
 
 export interface ITodoContexts {
@@ -21,17 +22,23 @@ export interface ITodoState {
 
 export enum ActionEnum {
     Add,
-    Delete
+    Delete,
+    ToggleFav
 }
 
-export type IReducerAction = IAddAction | IDeleteAction
+export type IReducerAction = IAddAction | IDeleteAction | IToggleFavAction; 
 
 export interface IAddAction {
     type: ActionEnum.Add,
-    data: ITask
+    data: ITask;
 }
 
 export interface IDeleteAction {
     type: ActionEnum.Delete,
-    data:{id : string}
+    data: { id: string }
 }
+
+export interface IToggleFavAction {
+    type: ActionEnum.ToggleFav,
+    data: { id: string }
+} 
