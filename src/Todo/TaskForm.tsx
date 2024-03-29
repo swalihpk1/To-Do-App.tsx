@@ -1,10 +1,15 @@
-import { MessageBar, MessageBarType, Stack } from '@fluentui/react';
-import React, { useEffect, useState } from 'react';
+import { MessageBar, MessageBarType } from '@fluentui/react';
+import React, { useContext, useEffect, useState } from 'react';
 import HomeStyle from './Home.style';
 import useInputs from './useInputs';
+import { TodoContext } from './TodoProvider';
+import { ActionEnum, ITask } from './Types';
 
 const TaskForm = () => {
-    const [inputFocused, setInputFocused] = useState(true);
+
+    const { dispatch } = useContext(TodoContext)
+
+    const [inputFocused, setInputFocused] = useState(false);
     const [showMessage, setShowMessage] = useState<{ type: MessageBarType, message: string }>({ type: MessageBarType.success, message: "" })
 
     const handleInputFocus = () => {
@@ -19,6 +24,9 @@ const TaskForm = () => {
 
     const onFormSubmit = (event: React.FormEvent) => {
         event.preventDefault();
+
+        const data: ITask = { id: "", task: task.value }
+        dispatch({ type: ActionEnum.Add, data })
         setShowMessage({ type: MessageBarType.success, message: "Task Added" });
     }
 
@@ -50,7 +58,7 @@ const TaskForm = () => {
                 </button>
             </div>
             {showMessage.message && (
-                <MessageBar messageBarType={MessageBarType.success} className={`${HomeStyle.messageBar}`}>Task Added</MessageBar>
+                <p className={`${HomeStyle.messageBar}`}>Task added <i className={`${HomeStyle.icons} fi fi-bs-octagon-check`}></i></p>
             )}
         </form>
     );

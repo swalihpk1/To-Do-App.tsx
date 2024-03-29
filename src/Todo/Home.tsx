@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import HomeStyle from "./Home.style";
 import TodoString from "./String.json";
 import { Label, Pivot, PivotItem, Stack } from "@fluentui/react";
-import { ITask, PivotKeyEnum } from "./Types";
+import { PivotKeyEnum } from "./Types";
 import TaskList from "./TaskList";
 import TodoProvider from "./TodoProvider";
 import TaskForm from "./TaskForm";
@@ -50,7 +50,7 @@ const Home = () => {
                 <TaskList />
               </PivotItem>
 
-              <PivotItem headerText={TodoString.pivots.completed} itemKey={PivotKeyEnum.Completed}>
+              <PivotItem headerText={TodoString.pivots.completed} itemKey={PivotKeyEnum.Completed} className={`${HomeStyle.linkIsSelected}`}>
                 <Label>Pivot #2</Label>
               </PivotItem>
 

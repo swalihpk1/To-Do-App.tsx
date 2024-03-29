@@ -99,8 +99,10 @@ const HomeStyle = mergeStyleSets({
         color: "rgb(195, 177, 147)!important"
     },
     checkbox: {
-        background: "white",
-        width: "20px"
+        '& input[type="checkbox"]': {
+            background: 'white !important',
+            width: '30rem !important',
+        },
     },
     pivotContainer: {
         margin: "2rem",
@@ -108,9 +110,12 @@ const HomeStyle = mergeStyleSets({
     },
     messageBar: {
         width: "28%!important",
-        background: "#76db7cc7",
-        margin:"1rem !important",
-        borderRadius: "3px"
+        margin: "1rem !important",
+        borderRadius: "3px",
+        color: "#b8dbb8"
+    },
+    linkIsSelected: {
+        color: "#b8dbb8 !important"
     }
 });
 
